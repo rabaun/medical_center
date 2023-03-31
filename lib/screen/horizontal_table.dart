@@ -14,24 +14,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: Column(
-      children: [
-        Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
-              child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                      'Чтобы просмотреть обращение детально кликните дважды по строке')),
-            )),
-        Expanded(
-            flex: 9,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
-              child: Container(child: _getBodyWidget()),
-            )),
-      ],
+            child: Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
+                child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: const Text(
+                        'Чтобы просмотреть обращение детально кликните дважды по строке')),
+              )),
+          Expanded(
+              flex: 9,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
+                child: Container(child: _getBodyWidget()),
+              )),
+        ],
+      ),
     )));
   }
 
@@ -237,40 +240,6 @@ class _MyHomePageState extends State<MyHomePage> {
           alignment: Alignment.centerLeft,
         ),
       ],
-    );
-  }
-}
-
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('Item: $index'),
-          tileColor: selectedIndex == index ? Colors.blue : null,
-          onTap: () {
-            setState(() {
-              selectedIndex = index;
-            });
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => UserCadr(
-                          index: selectedIndex,
-                          tasksList: [],
-                        )));
-          },
-        );
-      },
     );
   }
 }

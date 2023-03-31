@@ -13,7 +13,8 @@ class UserCadr extends StatefulWidget {
 class UserCadrState extends State<UserCadr> {
   Widget _buildCardUser() {
     return (widget.index != null)
-        ? ListTile(
+        ? SafeArea(
+            child: ListTile(
             title: Row(
               children: [
                 Padding(
@@ -193,19 +194,26 @@ class UserCadrState extends State<UserCadr> {
                 ),
               ],
             ),
-          )
+          ))
         : Container();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: const Text(
-            'История обращений',
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.green,
+          title: const Text("История обращений",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500)),
+          centerTitle: true,
+          backgroundColor: Colors.white,
         ),
         body: SafeArea(child: _buildCardUser()));
   }
