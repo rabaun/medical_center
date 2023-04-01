@@ -128,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
       height: MediaQuery.of(context).size.height,
       child: HorizontalDataTable(
         leftHandSideColumnWidth: 197,
-        rightHandSideColumnWidth: MediaQuery.of(context).size.width,
+        rightHandSideColumnWidth: 1233,
         isFixedHeader: true,
         headerWidgets: _getTitleWidget(),
         leftSideItemBuilder: _generateFirstColumnRow,
@@ -201,45 +201,48 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _generateRightHandSideColumnRow(BuildContext context, int index) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 224,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-          child: Text(tasksList[index]['number_phone'].toString(),
-              style: TextStyle(fontSize: 16)),
-        ),
-        Container(
-          child: Text(tasksList[index]['full_name'].toString()),
-          width: 380,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(tasksList[index]['date'].toString()),
-          width: 135,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(tasksList[index]['time'].toString()),
-          width: 117,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(tasksList[index]['duration'].toString()),
-          width: 180,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-      ],
-    );
+    return SingleChildScrollView(
+        child: ConstrainedBox(
+            constraints: const BoxConstraints(),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 224,
+                  height: 52,
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(tasksList[index]['number_phone'].toString(),
+                      style: const TextStyle(fontSize: 16)),
+                ),
+                Container(
+                  width: 380,
+                  height: 52,
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(tasksList[index]['full_name'].toString()),
+                ),
+                Container(
+                  width: 135,
+                  height: 52,
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(tasksList[index]['date'].toString()),
+                ),
+                Container(
+                  width: 117,
+                  height: 52,
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(tasksList[index]['time'].toString()),
+                ),
+                Container(
+                  width: 180,
+                  height: 52,
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(tasksList[index]['duration'].toString()),
+                ),
+              ],
+            )));
   }
 }
